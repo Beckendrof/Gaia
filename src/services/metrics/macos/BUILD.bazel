@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "macos",
+    srcs = [
+        "linux_build.go",
+        "macos.go",
+    ],
+    importpath = "beckendrof/gaia/src/services/metrics/macos",
+    visibility = ["//visibility:public"],
+    deps = select({
+        "@io_bazel_rules_go//go/platform:android": [
+            "//src/services/grpc/apostolis",
+        ],
+        "@io_bazel_rules_go//go/platform:darwin": [
+            "//src/services/grpc/apostolis",
+            "//src/utils",
+            "@com_github_dkorunic_ismc//smc",
+            "@com_github_mackerelio_go_osstat//cpu",
+            "@com_github_mackerelio_go_osstat//loadavg",
+            "@com_github_maxbeatty_golang_book//chapter11/math",
+            "@com_github_shirou_gopsutil//cpu",
+            "@com_github_shirou_gopsutil_v3//disk",
+        ],
+        "@io_bazel_rules_go//go/platform:ios": [
+            "//src/services/grpc/apostolis",
+            "//src/utils",
+            "@com_github_dkorunic_ismc//smc",
+            "@com_github_mackerelio_go_osstat//cpu",
+            "@com_github_mackerelio_go_osstat//loadavg",
+            "@com_github_maxbeatty_golang_book//chapter11/math",
+            "@com_github_shirou_gopsutil//cpu",
+            "@com_github_shirou_gopsutil_v3//disk",
+        ],
+        "@io_bazel_rules_go//go/platform:linux": [
+            "//src/services/grpc/apostolis",
+        ],
+        "//conditions:default": [],
+    }),
+)

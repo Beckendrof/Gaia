@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "redis",
+    srcs = ["pub_sub.go"],
+    importpath = "beckendrof/gaia/src/services/mjolnir/redis",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/services/mjolnir/types",
+        "//src/services/mjolnir/utils",
+        "@com_github_go_redis_redis_v8//:redis",
+    ],
+)

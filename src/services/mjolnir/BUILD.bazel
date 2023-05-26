@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "logger",
+    srcs = [
+        "parser.go",
+        "zap_init.go",
+    ],
+    importpath = "beckendrof/gaia/src/services/logger",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/utils",
+        "@com_github_lestrrat_go_file_rotatelogs//:file-rotatelogs",
+        "@com_github_spf13_viper//:viper",
+        "@org_uber_go_zap//:zap",
+        "@org_uber_go_zap//zapcore",
+    ],
+)
+
+go_library(
+    name = "mjolnir",
+    srcs = ["mjolnir.go"],
+    data = [
+        "mjolnir.toml",
+    ],
+    importpath = "beckendrof/gaia/src/services/mjolnir",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/services/mjolnir/redis",
+        "//src/services/mjolnir/types",
+        "//src/services/mjolnir/utils",
+        "//src/services/mjolnir/zap",
+        "@com_github_spf13_viper//:viper",
+        "@org_golang_x_exp//slices",
+    ],
+)

@@ -1,0 +1,89 @@
+syntax="proto3";
+
+package gaia.apostolis.api;
+
+option go_package = "src/services/grpc/apostolis";
+
+enum Stats {
+    All = 0;
+    Memory = 1;
+    CPU = 2;
+    GPU = 3;
+    Disk = 4;
+    LoadAvg = 5;
+    Net = 6;
+}
+
+message ApostolisRequest {
+    Stats metric = 1; 
+}
+
+message ApostolisReply {
+    int32 status = 1; //exitcode
+    string message = 2; //successful or unsuccessful
+    oneof data {
+        MemoryReply memory_usage =3;
+        CPUReply cpu_usage = 4;
+        GPUReply gpu_usage = 5;
+        DiskReply disk_usage = 6;
+        LoadReply load_usage = 7;
+        NetReply net_usage = 8;
+        AllUsageStats all = 9;
+    } //output string
+}
+
+message DiskReply {
+    repeated string name = 1;
+    repeated uint64 reads_completed = 2;
+    repeated uint64 writes_completed = 3;
+}
+
+message LoadReply {
+    double loadavg1 = 1;
+    double loadavg5 = 2;
+    double loadavg15 = 3;
+}
+
+message GPUReply {
+    repeated string device_name = 1;
+    repeated double temp = 2;
+    double percent = 3;
+    double used = 4;
+    double total = 5;
+    repeated double power = 6;
+}
+
+message NetReply {
+    repeated string name = 1;
+    repeated uint64 rx_bytes = 2;
+    repeated uint64 tx_bytes = 3;
+}
+
+message MemoryReply {
+    double Total = 1;
+    double Used = 2;
+    double Cached = 3;
+    double Free = 4;
+    double Active = 5;
+    double Inactive = 6;
+    double Available = 7;
+}
+
+message CPUReply {
+    double total = 1;
+    double user = 2;
+    double system = 3;
+    double idle = 4;
+    double temp = 5;
+    double power = 6;
+    repeated double cpus = 7;
+}
+
+message AllUsageStats{
+    MemoryReply memory_usage =1;
+    CPUReply cpu_usage = 2;
+    GPUReply gpu_usage = 3;
+    DiskReply disk_usage = 4;
+    LoadReply load_usage = 5;
+    NetReply net_usage = 6;
+}

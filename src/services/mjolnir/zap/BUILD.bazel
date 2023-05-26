@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "zap",
+    srcs = ["zap_init.go"],
+    importpath = "beckendrof/gaia/src/services/mjolnir/zap",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/services/mjolnir/utils",
+        "@com_github_lestrrat_go_file_rotatelogs//:file-rotatelogs",
+        "@org_uber_go_zap//:zap",
+        "@org_uber_go_zap//zapcore",
+    ],
+)

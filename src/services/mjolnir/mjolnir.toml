@@ -1,0 +1,42 @@
+RedisSubChannel = "logger"
+StdLogsEnable = true
+
+[Services.Gaia]
+Name = "gaia"
+LogPath = "/logs/gaia"
+S3Path = ""
+
+[Services.Bifrost]
+Name = "bifrost"
+LogPath = "/logs/bifrost"
+S3Path = ""
+
+[Services.Asgard]
+Name = "asgard"
+LogPath = "/logs/asgard"
+S3Path = ""
+
+[Services.Genesis]
+Name = "genesis"
+LogPath = "/logs/genesis"
+S3Path = ""
+
+[Services.Animus]
+Name = "animus"
+LogPath = "/logs/animus"
+S3Path = ""
+
+[Services.Malenia]
+Name = "malenia"
+LogPath = "/logs/malenia"
+S3Path = ""
+
+[Services.Strato]
+Name = "strato"
+LogPath = "/logs/strato"
+S3Path = ""
+
+[Services.Mjolnir]
+Name = "mjolnir"
+LogPath = "/logs/mjolnir"
+S3Path = ""

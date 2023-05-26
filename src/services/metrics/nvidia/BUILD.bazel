@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "nvidia",
+    srcs = ["nvidia.go"],
+    cgo = True,
+    importpath = "beckendrof/gaia/src/services/metrics/nvidia",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/services/grpc/apostolis",
+        "//src/utils",
+        "@com_github_shirou_gopsutil//cpu",
+    ],
+)

@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "utils",
+    srcs = [
+        "parser.go",
+        "utils.go",
+    ],
+    importpath = "beckendrof/gaia/src/services/mjolnir/utils",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/services/mjolnir/types",
+        "@org_golang_x_exp//slices",
+        "@org_uber_go_zap//:zap",
+    ],
+)

@@ -1,0 +1,19 @@
+/*
+============================================================================================
+This file contains the Apostolis service definition. Please read them carefully
+Thank You --- @abhinowP
+============================================================================================
+*/
+
+syntax = "proto3";
+
+package gaia.apostolis.api;
+
+option go_package = "src/services/grpc/apostolis";
+
+import "src/models/protos/apostolis/apostolis_messages.proto";
+
+// The Apostolis service definition.
+service Apostolis {
+    rpc System (ApostolisRequest) returns (stream ApostolisReply) {} 
+}

@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "apostolis",
+    srcs = ["apostolis.go"],
+    importpath = "beckendrof/gaia/src/controllers/grpc/apostolis",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/services/grpc/apostolis",
+        "//src/services/metrics",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)

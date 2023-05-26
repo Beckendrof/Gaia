@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "metrics",
+    srcs = ["metrics.go"],
+    importpath = "beckendrof/gaia/src/services/metrics",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/services/grpc/apostolis",
+        "//src/services/metrics/macos",
+        "//src/services/metrics/nvidia",
+        "//src/utils",
+    ],
+)
