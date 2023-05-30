@@ -26,7 +26,6 @@ dump.rdb
 # vendor/
 
 # Go workspace file
-go.work
 bazel-go
 .vscode/configurationCache.log
 .vscode/targets.log
