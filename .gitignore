@@ -1,7 +1,7 @@
-bazel-metrics
 bazel-bin
 bazel-testlogs
 bazel-out
+bazel-gaia
 .DS_Store
 tests
 tmp
